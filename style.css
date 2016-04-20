@@ -18,12 +18,10 @@ body {
     width: 100vw;
     height: 90vh;
     background-color: #0000ff;
-}
-.log {
     height: 84vh;
     width: 100vw;
 }
-.log .history {
+.container .history {
     padding: 2%;
     font-size: 1vw;
 }

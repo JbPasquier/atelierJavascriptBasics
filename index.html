@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang='fr'>
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
         <title>Let me code!</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style.css" />
     </head>
     <body>
         <h1 class="heading">Unicorns rulz teh world</h1>
         <div class="container">
-            <div class="log">
-                <div class="history" id='journal'></div>
-            </div>
-            <hr>
-            <div class="input">
-                <i>&nbsp;<span id='username'>user</span>@unicorn~$&nbsp;</i><input onkeyup='execEntry()' id='userInput' type="text" name="consoleEntry" placeholder="Command..." autofocus autocomplete="off"/>
-            </div>
+            <div class="history" id='journal'></div>
+        </div>
+        <hr />
+        <div class="input">
+            <i>&nbsp;<span id='username'>user</span>@unicorn~$&nbsp;</i>
+            <input id='userInput' type="text" placeholder="Command..." autofocus autocomplete="off" onkeyup='execEntry()' />
         </div>
         <script src="terminal.js"></script>
     </body>

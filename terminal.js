@@ -1,13 +1,13 @@
-var userEntry = '',
+var userInput = '',
     username = 'user',
     journal = [],
-    currLength = 0;
+    journalPosition = 0;
 
-document.getElementById('journal').innerHTML = 'Hello ' + username;
+document.getElementById('journal').innerHTML = 'Hello ' + username + '<br />man is your friend';
 document.getElementById('username').innerHTML = username;
 
 function getContent() {
-    userEntry = document.getElementById('userInput').value;
+    userInput = document.getElementById('userInput').value;
 }
 
 function journalise(text) {
@@ -18,11 +18,14 @@ function journalise(text) {
 function execEntry() {
     if (event.keyCode == 13) {
         getContent();
-        journal.push(userEntry);
-        currLength++;
-        if (userEntry !== '') {
-            var entry = userEntry.split(' ');
+        journal.push(userInput);
+        journalPosition++;
+        if (userInput !== '') {
+            var entry = userInput.split(' ');
             switch (entry[0]) {
+                case 'man':
+                    journalise('echo text<br />clear<br />su<br />su username<br />history<br />history -c<br />Up & down key to look forward backward<br />man for this message');
+                    break;
                 case 'echo':
                     entry.shift();
                     echo(entry.join(' ') || username + ' don\'t want to tell you something');
@@ -49,16 +52,22 @@ function execEntry() {
         } else {
             journalise('Invalid entry');
         }
-    } else if(event.keyCode == 38) {
-        currLength--;
-        if(currLength >= journal.length) currLength = journal.length-1;
-        if(currLength <= 0) currLength = 0;
-        document.getElementById('userInput').value = journal[currLength] || '';
-    } else if(event.keyCode == 40) {
-        currLength++;
-        if(currLength >= journal.length) currLength = journal.length-1;
-        if(currLength <= 0) currLength = 0;
-        document.getElementById('userInput').value = journal[currLength] || '';
+    } else if (event.keyCode == 38) {
+        journalPosition--;
+        if (journalPosition >= 0) {
+            document.getElementById('userInput').value = journal[journalPosition];
+        } else {
+            journalPosition = -1;
+            document.getElementById('userInput').value = '';
+        }
+    } else if (event.keyCode == 40) {
+        journalPosition++;
+        if (journalPosition <= journal.length - 1) {
+            document.getElementById('userInput').value = journal[journalPosition];
+        } else {
+            journalPosition = journal.length;
+            document.getElementById('userInput').value = '';
+        }
     }
 }
 
