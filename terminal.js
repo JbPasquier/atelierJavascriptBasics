@@ -55,7 +55,7 @@ function execEntry() {
     } else if (event.keyCode == 38) {
         journalPosition--;
         if (journalPosition >= 0) {
-            document.getElementById('userInput').value = journal[journalPosition];
+            document.getElementById('userInput').value = journal[journalPosition] || '';
         } else {
             journalPosition = -1;
             document.getElementById('userInput').value = '';
@@ -63,7 +63,7 @@ function execEntry() {
     } else if (event.keyCode == 40) {
         journalPosition++;
         if (journalPosition <= journal.length - 1) {
-            document.getElementById('userInput').value = journal[journalPosition];
+            document.getElementById('userInput').value = journal[journalPosition] || '';
         } else {
             journalPosition = journal.length;
             document.getElementById('userInput').value = '';
